@@ -30,7 +30,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* Sidebar */}
       <aside className="admin-sidebar">
         <div className="p-6">
-          <h1 className="text-2xl font-bold mb-8">DevAshish</h1>
+          <h1 className="text-2xl font-bold mb-8">AkTrendFlare</h1>
           <nav className="space-y-2">
             {menuItems.map((item) => {
               const Icon = item.icon;

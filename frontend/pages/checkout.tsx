@@ -46,7 +46,7 @@ export default function Checkout() {
             key: razorpayKeyId,
             amount: order.finalAmount * 100,
             currency: 'INR',
-            name: 'DevAshish',
+            name: 'AkTrendFlare',
             description: `Order #${order.orderNumber}`,
             order_id: razorpayOrderId,
             handler: async (response: any) => {

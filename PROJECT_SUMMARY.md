@@ -1,4 +1,4 @@
-# DevAshish Project Summary
+# AkTrendFlare Project Summary
 
 ## ✅ Completed Features
 

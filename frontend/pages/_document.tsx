@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="DevAshish - Fashion for Everyone" />
+        <meta name="description" content="AkTrendFlare - Fashion for Everyone" />
       </Head>
       <body>
         <Main />

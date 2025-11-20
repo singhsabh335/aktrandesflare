@@ -1,4 +1,4 @@
-# DevAshish - Full-Stack E-Commerce Platform
+# AkTrendFlare - Full-Stack E-Commerce Platform
 
 A production-ready, responsive clothing marketplace built with Next.js, Express, MongoDB, and Elasticsearch.
 
@@ -474,5 +474,5 @@ For issues and questions:
 
 ---
 
-Built with ❤️ for DevAshish
+Built with ❤️ for AkTrendFlare
 

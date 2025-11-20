@@ -5,7 +5,7 @@ export default function HeroBanner() {
         <div className="max-w-2xl">
           <h1 className="text-5xl font-bold mb-4">Fashion for Everyone</h1>
           <p className="text-xl mb-8">
-            Discover the latest trends and styles at DevAshish
+            Discover the latest trends and styles at AkTrendFlare
           </p>
           <a href="/search" className="btn-accent inline-block">
             Shop Now

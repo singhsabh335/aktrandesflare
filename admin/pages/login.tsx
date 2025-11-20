@@ -38,7 +38,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-gradient-to-br from-ak-primary to-ak-secondary flex items-center justify-center">
       <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-ak-secondary mb-2">DevAshish</h1>
+          <h1 className="text-3xl font-bold text-ak-secondary mb-2">AkTrendFlare</h1>
           <p className="text-gray-600">Admin Panel</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

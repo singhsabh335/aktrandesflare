@@ -5,8 +5,8 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="DevAshish Admin Panel" />
-        <title>DevAshish Admin</title>
+        <meta name="description" content="AkTrendFlare Admin Panel" />
+        <title>AkTrendFlare Admin</title>
       </Head>
       <body>
         <Main />

@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:7.0
-    container_name: devashish-mongodb
+    container_name: aktrendflare-mongodb
     ports:
       - "27017:27017"
     environment:
@@ -12,11 +12,11 @@ services:
     volumes:
       - mongodb_data:/data/db
     networks:
-      - devashish-network
+      - aktrendflare-network
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
-    container_name: devashish-elasticsearch
+    container_name: aktrendflare-elasticsearch
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -27,28 +27,28 @@ services:
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
     networks:
-      - devashish-network
+      - aktrendflare-network
 
   redis:
     image: redis:7-alpine
-    container_name: devashish-redis
+    container_name: aktrendflare-redis
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - devashish-network
+      - aktrendflare-network
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: devashish-backend
+    container_name: aktrendflare-backend
     ports:
       - "5000:5000"
     environment:
       - NODE_ENV=development
-      - MONGO_URI=mongodb://admin:password@mongodb:27017/devashish?authSource=admin
+      - MONGO_URI=mongodb://admin:password@mongodb:27017/aktrendflare?authSource=admin
       - ELASTICSEARCH_URL=http://elasticsearch:9200
       - REDIS_URL=redis://redis:6379
       - JWT_SECRET=${JWT_SECRET:-your-super-secret-jwt-key-change-in-production}
@@ -67,14 +67,14 @@ services:
       - elasticsearch
       - redis
     networks:
-      - devashish-network
+      - aktrendflare-network
     command: npm run dev
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: devashish-frontend
+    container_name: aktrendflare-frontend
     ports:
       - "3000:3000"
     environment:
@@ -87,7 +87,7 @@ services:
     depends_on:
       - backend
     networks:
-      - devashish-network
+      - aktrendflare-network
     command: npm run dev
 
 volumes:
@@ -96,6 +96,6 @@ volumes:
   redis_data:
 
 networks:
-  devashish-network:
+  aktrendflare-network:
     driver: bridge
 

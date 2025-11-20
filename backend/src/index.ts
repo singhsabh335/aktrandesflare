@@ -29,9 +29,9 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'DevAshish API',
+      title: 'AkTrendFlare API',
       version: '1.0.0',
-      description: 'E-commerce API for DevAshish',
+      description: 'E-commerce API for AkTrendFlare',
     },
     servers: [
       {
@@ -79,7 +79,7 @@ app.use(errorHandler);
 
 // Database connection
 mongoose
-  .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/devashish')
+  .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/aktrendflare')
   .then(() => {
     console.log('✅ Connected to MongoDB');
     return connectElasticsearch().catch((err) => {

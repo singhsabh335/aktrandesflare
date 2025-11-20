@@ -1,7 +1,7 @@
 {
-  "name": "devashish-backend",
+  "name": "aktrendflare-backend",
   "version": "1.0.0",
-  "description": "DevAshish backend API",
+  "description": "AkTrendFlare backend API",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",

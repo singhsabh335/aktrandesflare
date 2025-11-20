@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>DevAshish - Fashion for Everyone</title>
-        <meta name="description" content="Shop the latest fashion trends at DevAshish" />
+        <title>AkTrendFlare - Fashion for Everyone</title>
+        <meta name="description" content="Shop the latest fashion trends at AkTrendFlare" />
       </Head>
 
       <Header />

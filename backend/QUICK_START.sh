@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "🚀 Starting DevAshish Admin Access..."
+echo "🚀 Starting AkTrendFlare Admin Access..."
 echo ""
 echo "Step 1: Checking backend..."
 if ! curl -s http://localhost:5000/health > /dev/null 2>&1; then

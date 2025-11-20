@@ -16,7 +16,7 @@ const subcategories = {
 };
 
 const brands = [
-  'DevAshish',
+  'AkTrend',
   'FashionHub',
   'StyleZone',
   'TrendyWear',
@@ -238,7 +238,7 @@ const seed = async () => {
   try {
     console.log('🌱 Starting seed process...');
 
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/devashish');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/aktrendflare');
     console.log('✅ Connected to MongoDB');
 
     // Try to connect to Elasticsearch (optional)
