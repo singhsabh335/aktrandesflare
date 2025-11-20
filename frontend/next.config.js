@@ -7,6 +7,7 @@ const nextConfig = {
       'localhost',
       'thumbs.dreamstime.com',
       'dreamstime.com',
+      'www.jeanswholesaler.in',
     ],
     remotePatterns: [
       {
@@ -16,6 +17,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**.picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.jeanswholesaler.in',
       },
     ],
   },
