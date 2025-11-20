@@ -199,7 +199,7 @@ The default value (`http://localhost:5000/api`) should work for local developmen
 
 After seeding:
 
-- **Admin**: admin@devashish.com / admin123
+- **Admin**: admin@aktrendflare.com / admin123
   - Access admin panel at: http://localhost:3001/login
 - **User**: user1@example.com / user123
   - Access customer app at: http://localhost:3000/login
@@ -469,7 +469,7 @@ ISC
 ## 📞 Support
 
 For issues and questions:
-- Email: support@devashish.com
+- Email: support@aktrendflare.com
 - GitHub Issues: [Create an issue](https://github.com/your-repo/issues)
 
 ---

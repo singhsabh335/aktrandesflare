@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
-            <p className="text-gray-300">Email: support@devashish.com</p>
+            <p className="text-gray-300">Email: support@aktrendflare.com</p>
             <p className="text-gray-300">Phone: +91 1800-123-4567</p>
           </div>
         </div>

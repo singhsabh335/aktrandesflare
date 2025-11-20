@@ -125,7 +125,7 @@ make lint
 ## 🔑 Key Credentials
 
 After seeding:
-- **Admin**: admin@devashish.com / admin123
+- **Admin**: admin@aktrendflare.com / admin123
   - Access at: http://localhost:3001/login
 - **User**: user1@example.com / user123
   - Access at: http://localhost:3000/login

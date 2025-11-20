@@ -23,7 +23,7 @@ fi
 
 echo ""
 echo "Step 3: Admin Login Credentials"
-echo "   Email: admin@devashish.com"
+echo "   Email: admin@aktrendflare.com"
 echo "   Password: admin123"
 echo ""
 echo "Step 4: Access Admin Panel"

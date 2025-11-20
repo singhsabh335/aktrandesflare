@@ -48,7 +48,7 @@ export default function AdminLogin() {
               type="email"
               {...register('email', { required: 'Email is required' })}
               className="input-field"
-              placeholder="admin@devashish.com"
+              placeholder="admin@aktrendflare.com"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">{errors.email.message as string}</p>
@@ -71,7 +71,7 @@ export default function AdminLogin() {
           </button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-600">
-          Default: admin@devashish.com / admin123
+          Default: admin@aktrendflare.com / admin123
         </p>
       </div>
     </div>

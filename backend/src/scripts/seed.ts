@@ -150,7 +150,7 @@ const seedUsers = async () => {
   const adminPassword = await bcrypt.hash('admin123', 10);
   const admin = new User({
     name: 'Admin User',
-    email: 'admin@devashish.com',
+    email: 'admin@aktrendflare.com',
     phone: '9999999999',
     password: adminPassword,
     role: 'admin',
@@ -279,7 +279,7 @@ const seed = async () => {
 
     console.log('\n✨ Seed completed successfully!');
     console.log('\n📝 Login credentials:');
-    console.log('   Admin: admin@devashish.com / admin123');
+    console.log('   Admin: admin@aktrendflare.com / admin123');
     console.log('   User: user1@example.com / user123');
 
     process.exit(0);

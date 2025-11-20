@@ -17,7 +17,7 @@ npm run seed
 ```
 
 This creates:
-- **Admin user**: `admin@devashish.com` / `admin123`
+- **Admin user**: `admin@aktrendflare.com` / `admin123`
 - 10 regular users
 - 50 sample products
 - Sample coupons
@@ -36,7 +36,7 @@ Wait for: `Ready on http://localhost:3000`
 1. Open browser: **http://localhost:3000**
 2. Click **"Login"** button (top right)
 3. Enter credentials:
-   - **Email**: `admin@devashish.com`
+   - **Email**: `admin@aktrendflare.com`
    - **Password**: `admin123`
 4. Click **"Login"**
 
