@@ -454,7 +454,7 @@ ISC
 - Verify `NEXT_PUBLIC_API_URL` in admin `.env.local`
 - Check CORS settings in backend (should allow localhost:3001)
 - Ensure backend is running on port 5000
-- Try logging in with: admin@devashish.com / admin123
+- Try logging in with: admin@aktrendflare.com / admin123
 
 ### Port already in use errors
 - **Backend (port 5000)**: `lsof -ti:5000 | xargs kill -9`
