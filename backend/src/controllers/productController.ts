@@ -10,6 +10,7 @@ export const searchProducts = async (req: AuthRequest, res: Response): Promise<v
     q,
     category,
     brand,
+    gender,
     size,
     color,
     price_min,
@@ -43,6 +44,15 @@ export const searchProducts = async (req: AuthRequest, res: Response): Promise<v
     }
     if (brand) {
       query.brand = brand;
+    }
+    if (gender) {
+      query.gender = gender;
+    }
+    if (size) {
+      query['variants.size'] = size;
+    }
+    if (color) {
+      query['variants.color'] = color;
     }
     if (price_min || price_max) {
       query.price = {};
@@ -141,12 +151,16 @@ export const searchProducts = async (req: AuthRequest, res: Response): Promise<v
     filter.push({ term: { brand: brand } });
   }
 
+  if (gender) {
+    filter.push({ term: { gender: gender } });
+  }
+
   if (size) {
-    filter.push({ term: { size: size } });
+    filter.push({ term: { 'variants.size': size } });
   }
 
   if (color) {
-    filter.push({ term: { color: color } });
+    filter.push({ term: { 'variants.color': color } });
   }
 
   if (price_min || price_max) {

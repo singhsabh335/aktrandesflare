@@ -133,7 +133,7 @@ const OrderSchema = new Schema<IOrder>(
 );
 
 OrderSchema.index({ userId: 1 });
-OrderSchema.index({ orderNumber: 1 });
+// Note: orderNumber already has unique: true which creates an index automatically
 OrderSchema.index({ status: 1 });
 OrderSchema.index({ createdAt: -1 });
 

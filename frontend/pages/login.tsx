@@ -14,6 +14,9 @@ export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [isLoading, setIsLoading] = useState(false);
 
+  // Get redirect URL from query params
+  const redirectUrl = router.query.redirect as string || '/';
+
   const onSubmit = async (data: any) => {
     setIsLoading(true);
     try {
@@ -21,7 +24,8 @@ export default function Login() {
       const { user, accessToken, refreshToken } = response.data.data;
       setAuth(user, accessToken, refreshToken);
       toast.success('Login successful!');
-      router.push('/');
+      // Redirect to the original URL or home page
+      router.push(redirectUrl);
     } catch (error: any) {
       toast.error(error.response?.data?.error?.message || 'Login failed');
     } finally {

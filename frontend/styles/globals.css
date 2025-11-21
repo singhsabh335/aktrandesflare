@@ -9,30 +9,73 @@
 }
 
 @layer base {
+  * {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-gray-50 text-gray-900;
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  button, a {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-ak-primary hover:bg-ak-primary/90 text-white font-semibold py-2 px-4 rounded-lg transition-colors;
+    @apply bg-ak-primary hover:bg-ak-primary/90 text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply bg-ak-secondary hover:bg-ak-secondary/90 text-white font-semibold py-2 px-4 rounded-lg transition-colors;
+    @apply bg-ak-secondary hover:bg-ak-secondary/90 text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-accent {
-    @apply bg-ak-accent hover:bg-ak-accent/90 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors;
+    @apply bg-ak-accent hover:bg-ak-accent/90 text-gray-900 font-semibold py-2.5 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ak-primary focus:border-transparent outline-none;
+    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ak-primary focus:border-transparent outline-none transition-all duration-200;
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md p-6;
+    @apply bg-white rounded-xl shadow-md p-6 transition-shadow duration-200 hover:shadow-lg;
+  }
+  
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Responsive text sizes */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-2xl;
+    }
+    h2 {
+      @apply text-xl;
+    }
+    h3 {
+      @apply text-lg;
+    }
   }
 }
 

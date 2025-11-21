@@ -41,7 +41,7 @@ const CouponSchema = new Schema<ICoupon>(
   }
 );
 
-CouponSchema.index({ code: 1 });
+// Note: code already has unique: true which creates an index automatically
 CouponSchema.index({ validFrom: 1, validUntil: 1 });
 CouponSchema.index({ isActive: 1 });
 

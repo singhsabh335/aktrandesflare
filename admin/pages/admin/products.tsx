@@ -128,16 +128,21 @@ export default function AdminProducts() {
 }
 
 function ProductModal({ product, onClose, onSubmit, isLoading }: any) {
-  const { register, handleSubmit } = useForm({
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    product?.categories || []
+  );
+  
+  const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: product
       ? {
           name: product.name,
           brand: product.brand,
+          gender: product.gender || 'Unisex',
           description: product.description,
           price: product.price,
           mrp: product.mrp,
           discount: product.discount,
-          categories: product.categories?.join(', ') || '',
+          customCategories: '',
           images: product.images?.join('\n') || '',
           size: product.variants?.[0]?.size || 'M',
           color: product.variants?.[0]?.color || 'Black',
@@ -146,11 +151,12 @@ function ProductModal({ product, onClose, onSubmit, isLoading }: any) {
       : {
           name: '',
           brand: '',
+          gender: 'Unisex',
           description: '',
           price: '',
           mrp: '',
           discount: 0,
-          categories: '',
+          customCategories: '',
           images: '',
           size: 'M',
           color: 'Black',
@@ -158,15 +164,37 @@ function ProductModal({ product, onClose, onSubmit, isLoading }: any) {
         },
   });
 
+  const handleCategoryToggle = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
   const handleFormSubmit = (data: any) => {
+    // Get custom categories
+    const customCategories = data.customCategories 
+      ? data.customCategories.split(',').map((c: string) => c.trim()).filter(Boolean)
+      : [];
+    
+    // Combine all categories
+    const allCategories = [...new Set([...selectedCategories, ...customCategories])];
+    
+    if (allCategories.length === 0) {
+      toast.error('Please select at least one category');
+      return;
+    }
+    
     const productData = {
       name: data.name,
       brand: data.brand,
+      gender: data.gender,
       description: data.description,
       price: parseFloat(data.price),
       mrp: parseFloat(data.mrp),
       discount: parseFloat(data.discount) || 0,
-      categories: data.categories.split(',').map((c: string) => c.trim()).filter(Boolean),
+      categories: allCategories,
       images: data.images.split('\n').map((img: string) => img.trim()).filter(Boolean),
       variants: [
         {
@@ -178,10 +206,16 @@ function ProductModal({ product, onClose, onSubmit, isLoading }: any) {
       ],
       slug: data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
       specs: {},
-      tags: data.categories.split(',').map((c: string) => c.trim().toLowerCase()),
+      tags: allCategories.map((c: string) => c.trim().toLowerCase()),
     };
     onSubmit(productData);
   };
+
+  const CLOTHING_CATEGORIES = [
+    'T-Shirts', 'Shirts', 'Jeans', 'Dresses', 'Sweaters', 'Jackets', 
+    'Shoes', 'Accessories', 'Shorts', 'Pants', 'Skirts', 'Tops',
+    'Hoodies', 'Sweatshirts', 'Blazers', 'Coats', 'Sneakers', 'Boots'
+  ];
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -197,6 +231,15 @@ function ProductModal({ product, onClose, onSubmit, isLoading }: any) {
           <div>
             <label className="block text-sm font-medium mb-2">Brand *</label>
             <input {...register('brand', { required: true })} className="input-field" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Gender *</label>
+            <select {...register('gender', { required: true })} className="input-field">
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Kids">Kids</option>
+              <option value="Unisex">Unisex</option>
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium mb-2">Description *</label>
@@ -221,11 +264,28 @@ function ProductModal({ product, onClose, onSubmit, isLoading }: any) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2">Categories (comma-separated) *</label>
+            <label className="block text-sm font-medium mb-2">Categories *</label>
+            <div className="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto border border-gray-300 rounded-lg p-3">
+              {CLOTHING_CATEGORIES.map((cat) => {
+                const isSelected = selectedCategories.includes(cat);
+                return (
+                  <label key={cat} className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => handleCategoryToggle(cat)}
+                      className="mr-2"
+                    />
+                    <span className="text-sm">{cat}</span>
+                  </label>
+                );
+              })}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Or enter custom categories (comma-separated):</p>
             <input
-              {...register('categories', { required: true })}
-              placeholder="Men, T-Shirts"
-              className="input-field"
+              {...register('customCategories')}
+              placeholder="Custom Category 1, Custom Category 2"
+              className="input-field mt-1"
             />
           </div>
           <div className="grid grid-cols-3 gap-4">

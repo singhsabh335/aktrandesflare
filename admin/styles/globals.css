@@ -9,8 +9,29 @@
 }
 
 @layer base {
+  * {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-gray-50 text-gray-900;
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  button, a {
+    transition: all 0.2s ease-in-out;
   }
 }
 

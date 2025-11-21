@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiHeart } from 'react-icons/fi';
+import { useAuthStore } from '@/lib/store';
 
 interface ProductCardProps {
   product: {
@@ -12,12 +14,26 @@ interface ProductCardProps {
     discount: number;
     images: string[];
     slug?: string;
+    requireLogin?: boolean; // Optional prop to require login
   };
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const router = useRouter();
+  const { user } = useAuthStore();
+
+  const handleClick = (e: React.MouseEvent) => {
+    // If login is required and user is not logged in, redirect to login
+    if (product.requireLogin && !user) {
+      e.preventDefault();
+      router.push(`/login?redirect=/products/${product.slug || product._id}`);
+    }
+  };
+
+  const productUrl = `/products/${product.slug || product._id}`;
+
   return (
-    <Link href={`/products/${product.slug || product._id}`}>
+    <Link href={productUrl} onClick={handleClick}>
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
         <div className="relative aspect-square">
           <Image
@@ -31,7 +47,17 @@ export default function ProductCard({ product }: ProductCardProps) {
               {product.discount}% OFF
             </span>
           )}
-          <button className="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100">
+          <button 
+            className="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (!user) {
+                router.push('/login?redirect=/wishlist');
+              }
+              // TODO: Add to wishlist functionality
+            }}
+          >
             <FiHeart className="text-gray-600" />
           </button>
         </div>

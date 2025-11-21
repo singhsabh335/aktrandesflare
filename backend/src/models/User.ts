@@ -55,8 +55,8 @@ const UserSchema = new Schema<IUser>(
   }
 );
 
-UserSchema.index({ email: 1 });
-UserSchema.index({ phone: 1 });
+// Note: email and phone already have unique: true which creates indexes automatically
+// Only add additional indexes if needed for compound queries
 
 export const User = mongoose.model<IUser>('User', UserSchema);
 

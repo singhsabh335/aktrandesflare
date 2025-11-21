@@ -14,6 +14,7 @@ export interface IProduct extends Document {
   slug: string;
   description: string;
   brand: string;
+  gender: 'Men' | 'Women' | 'Kids' | 'Unisex';
   categories: string[];
   price: number;
   mrp: number;
@@ -44,6 +45,12 @@ const ProductSchema = new Schema<IProduct>(
     slug: { type: String, required: true, unique: true },
     description: { type: String, required: true },
     brand: { type: String, required: true, trim: true },
+    gender: { 
+      type: String, 
+      enum: ['Men', 'Women', 'Kids', 'Unisex'], 
+      required: true,
+      default: 'Unisex'
+    },
     categories: [{ type: String, required: true }],
     price: { type: Number, required: true, min: 0 },
     mrp: { type: Number, required: true, min: 0 },
@@ -61,8 +68,9 @@ const ProductSchema = new Schema<IProduct>(
   }
 );
 
-ProductSchema.index({ slug: 1 });
+// Note: slug already has unique: true which creates an index automatically
 ProductSchema.index({ brand: 1 });
+ProductSchema.index({ gender: 1 });
 ProductSchema.index({ categories: 1 });
 ProductSchema.index({ price: 1 });
 ProductSchema.index({ rating: -1 });
